@@ -21,8 +21,13 @@ class ContactCards extends StatelessWidget {
       bloc: homeBloc,
       listener: (context, state) {
         if (state is HomeGmailPressedState) {
+          _launchURLBrowser('https://gmail.com');
+        }
+        if (state is HomeGitPressedState) {
           _launchURLBrowser('https://github.com/Ankur05103/');
-          print('done');
+        }
+        if (state is HomeLinkedinPressedState) {
+          _launchURLBrowser('https://www.linkedin.com/in/ankurmusmade/');
         }
       },
       builder: (context, state) {

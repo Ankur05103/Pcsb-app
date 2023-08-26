@@ -1,7 +1,6 @@
 import 'package:contacts_pcsb/home/ui/contact_cards.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -37,15 +36,13 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       drawer: Drawer(),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: 20),
+      body: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
         itemCount: 7, // Number of ContactCards widgets
+        separatorBuilder: (context, index) =>
+            SizedBox(height: 20), // Adjust the height as needed
         itemBuilder: (context, index) {
-          // ignore: prefer_const_constructors
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10), // Adjust spacing here
-            child: ContactCards(),
-          );
+          return ContactCards();
         },
       ),
     );

@@ -33,9 +33,10 @@ class ContactCards extends StatelessWidget {
       },
       builder: (context, state) {
         return Card(
-          color: Color.fromARGB(255, 10, 10, 10),
+          color: Colors.black,
           child: Container(
             decoration: BoxDecoration(
+                color: Color.fromARGB(255, 124, 145, 154),
                 borderRadius: BorderRadius.all(
                   Radius.circular(30),
                 ),
@@ -61,7 +62,7 @@ class ContactCards extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: width * 0.2,
+                              width: width * 0.1,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,9 +91,9 @@ class ContactCards extends StatelessWidget {
                                       style: OutlinedButton.styleFrom(
                                         shape: const CircleBorder(),
                                         side: const BorderSide(
-                                            width: 1,
-                                            color: Color.fromARGB(
-                                                255, 70, 70, 70)),
+                                          width: 1,
+                                          color: Color.fromARGB(211, 77, 101, 111),
+                                        ),
                                       ),
                                       child: const SizedBox(
                                         height: 22,

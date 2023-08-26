@@ -6,14 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 class ContactCards extends StatelessWidget {
   final HomeBlocBloc homeBloc = HomeBlocBloc();
 
-  _launchURLBrowser() async {
-    var url = Uri.parse("https://www.geeksforgeeks.org/");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-      print('launched');
-    } else {
-      throw 'Could not launch $url';
-    }
+  _launchURLBrowser(String url) {
+    launchUrl(Uri.parse(url));
   }
 
   @override
@@ -26,8 +20,8 @@ class ContactCards extends StatelessWidget {
     return BlocConsumer<HomeBlocBloc, HomeBlocState>(
       bloc: homeBloc,
       listener: (context, state) {
-        if (state is CardGmailNavigateEvent) {
-          _launchURLBrowser();
+        if (state is HomeGmailPressedState) {
+          _launchURLBrowser('https://github.com/Ankur05103/');
           print('done');
         }
       },
@@ -86,13 +80,13 @@ class ContactCards extends StatelessWidget {
                                     OutlinedButton(
                                       onPressed: () {
                                         homeBloc.add(CardGmailNavigateEvent());
-                                        _launchURLBrowser();
                                       },
                                       style: OutlinedButton.styleFrom(
                                         shape: const CircleBorder(),
                                         side: const BorderSide(
                                           width: 1,
-                                          color: Color.fromARGB(211, 77, 101, 111),
+                                          color:
+                                              Color.fromARGB(211, 77, 101, 111),
                                         ),
                                       ),
                                       child: const SizedBox(
@@ -105,7 +99,8 @@ class ContactCards extends StatelessWidget {
                                     ),
                                     OutlinedButton(
                                       onPressed: () {
-                                        homeBloc.add(CardGitNavigateEvent());
+                                        // homeBloc.add(CardGitNavigateEvent());
+                                        // _launchURLBrowser();
                                       },
                                       style: OutlinedButton.styleFrom(
                                         shape: const CircleBorder(),

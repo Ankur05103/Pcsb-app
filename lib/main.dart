@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
       ),
       drawer: Drawer(),
       body: ListView.separated(
-        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 15),
         itemCount: 7, // Number of ContactCards widgets
         separatorBuilder: (context, index) =>
             SizedBox(height: 20), // Adjust the height as needed

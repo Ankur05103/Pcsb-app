@@ -9,7 +9,14 @@ class ContactCards extends StatelessWidget {
   _launchURLBrowser(String url) {
     launchUrl(Uri.parse(url));
   }
+  _launchEmail(String r){
+    String recipient = r; 
+    String subject = '';
 
+    // Construct the mailto URL with recipient and subject
+    final url = 'mailto:$recipient?subject=';
+    launchUrl(Uri.parse(url));
+  }
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -21,7 +28,7 @@ class ContactCards extends StatelessWidget {
       bloc: homeBloc,
       listener: (context, state) {
         if (state is HomeGmailPressedState) {
-          _launchURLBrowser('https://gmail.com');
+          _launchEmail('ankur.musmade.kctvn@gmail.com');
         }
         if (state is HomeGitPressedState) {
           _launchURLBrowser('https://github.com/Ankur05103/');
@@ -35,11 +42,11 @@ class ContactCards extends StatelessWidget {
           color: Colors.black,
           child: Container(
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 124, 145, 154),
+                color: Color.fromARGB(97, 124, 145, 154),
                 borderRadius: BorderRadius.all(
                   Radius.circular(30),
                 ),
-                border: Border.all(color: Color.fromARGB(255, 45, 44, 44))),
+                border: Border.all(color: Color.fromARGB(117, 45, 44, 44))),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Column(
               children: [
@@ -50,18 +57,19 @@ class ContactCards extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ClipOval(
-                              child: Container(
-                                width: 120,
-                                height: 120,
-                                child: const Image(
-                                  image: AssetImage('assets/hackerman.jpg'),
+                            Container(
+                              width: 150,
+                              height: 150,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(75),
+                                child: Image.asset(
+                                  'assets/hackerman.jpg',
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: width * 0.1,
+                              width: width * 0.05,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,29 +99,33 @@ class ContactCards extends StatelessWidget {
                                         side: const BorderSide(
                                           width: 1,
                                           color:
-                                              Color.fromARGB(211, 77, 101, 111),
+                                              Color.fromARGB(0, 77, 101, 111),
                                         ),
                                       ),
                                       child: const SizedBox(
-                                        height: 22,
-                                        width: 22,
+                                        height: 34,
+                                        width: 34,
                                         child: Image(
-                                          image: AssetImage('assets/gmail.jpg'),
+                                          image: AssetImage(
+                                              'assets/gmailfinal.png'),
                                         ),
                                       ),
                                     ),
                                     OutlinedButton(
                                       onPressed: () {
-                                        // homeBloc.add(CardGitNavigateEvent());
-                                        // _launchURLBrowser();
+                                        homeBloc.add(CardGitNavigateEvent());
                                       },
                                       style: OutlinedButton.styleFrom(
                                         shape: const CircleBorder(),
-                                        side: const BorderSide(width: 1),
+                                        side: const BorderSide(
+                                          width: 1,
+                                          color:
+                                              Color.fromARGB(0, 77, 101, 111),
+                                        ),
                                       ),
                                       child: const SizedBox(
-                                        height: 22,
-                                        width: 22,
+                                        height: 30,
+                                        width: 30,
                                         child: Image(
                                           image:
                                               AssetImage('assets/github.png'),
@@ -127,11 +139,15 @@ class ContactCards extends StatelessWidget {
                                       },
                                       style: OutlinedButton.styleFrom(
                                         shape: const CircleBorder(),
-                                        side: const BorderSide(width: 1),
+                                        side: const BorderSide(
+                                          width: 1,
+                                          color:
+                                               Color.fromARGB(0, 124, 145, 154),
+                                        ),
                                       ),
                                       child: const SizedBox(
-                                        height: 22,
-                                        width: 22,
+                                        height: 30,
+                                        width: 30,
                                         child: Image(
                                           image:
                                               AssetImage('assets/linkedin.png'),

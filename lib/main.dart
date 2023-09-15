@@ -1,3 +1,4 @@
+import 'package:contacts_pcsb/home/data_model.dart';
 import 'package:contacts_pcsb/home/ui/contact_cards.dart';
 import 'package:flutter/material.dart';
 
@@ -36,14 +37,23 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       drawer: Drawer(),
-      body: ListView.separated(
-        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 15),
-        itemCount: 7, // Number of ContactCards widgets
-        separatorBuilder: (context, index) =>
-            SizedBox(height: 20), // Adjust the height as needed
-        itemBuilder: (context, index) {
-          return ContactCards();
+      body: ListView.builder(
+        itemBuilder: (context, i) {
+          return Container(
+            margin: EdgeInsets.only(bottom: 18), // Adjust the value for spacing
+            child: ContactCards(
+              Email: dataList[i]["Email"],
+              Name: dataList[i]["Name"],
+              Gmail: dataList[i]["Gmail"],
+              Mobileno: dataList[i]["Mobileno"],
+              Position: dataList[i]["Position"],
+              GitHub: dataList[i]["GitHub"],
+              Linkedin: dataList[i]["Linkedin"],
+              pic: dataList[i]["Profilepic"] ?? '',
+            ),
+          );
         },
+        itemCount: dataList.length,
       ),
     );
   }

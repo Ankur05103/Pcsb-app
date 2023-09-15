@@ -5,12 +5,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactCards extends StatelessWidget {
   final HomeBlocBloc homeBloc = HomeBlocBloc();
+  final String Email, Name, Gmail, Mobileno, Position, GitHub, Linkedin, pic;
 
+  ContactCards({super.key, required this.Email, required this.Name, required this.Gmail, required this.Mobileno, required this.Position, required this.GitHub, required this.Linkedin,required this.pic});
   _launchURLBrowser(String url) {
     launchUrl(Uri.parse(url));
   }
-  _launchEmail(String r){
-    String recipient = r; 
+  _launchEmail(){
+    String recipient = Gmail; 
     String subject = '';
 
     // Construct the mailto URL with recipient and subject
@@ -21,32 +23,32 @@ class ContactCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
 
-    final imageWidth = mediaQuery.size.width * 0.4;
-    final imageHeight = mediaQuery.size.width * 0.4;
+    final imageWidth = mediaQuery.size.width * 0.35;
+    final imageHeight = mediaQuery.size.width * 0.35;
     double width = mediaQuery.size.width * 0.4;
     return BlocConsumer<HomeBlocBloc, HomeBlocState>(
       bloc: homeBloc,
       listener: (context, state) {
         if (state is HomeGmailPressedState) {
-          _launchEmail('ankur.musmade.kctvn@gmail.com');
+          _launchEmail();
         }
         if (state is HomeGitPressedState) {
-          _launchURLBrowser('https://github.com/Ankur05103/');
+          _launchURLBrowser(GitHub);
         }
         if (state is HomeLinkedinPressedState) {
-          _launchURLBrowser('https://www.linkedin.com/in/ankurmusmade/');
+          _launchURLBrowser(Linkedin);
         }
       },
       builder: (context, state) {
         return Card(
-          color: Colors.black,
+          color: Color(0xFF000000),
           child: Container(
             decoration: BoxDecoration(
-                color: Color.fromARGB(97, 124, 145, 154),
+                color: Color.fromARGB(117, 45, 44, 125),
                 borderRadius: BorderRadius.all(
                   Radius.circular(30),
                 ),
-                border: Border.all(color: Color.fromARGB(117, 45, 44, 44))),
+                border: Border.all(color: Color.fromARGB(117, 45, 44, 125))),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Column(
               children: [
@@ -58,8 +60,8 @@ class ContactCards extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: 150,
-                              height: 150,
+                              width: imageWidth,
+                              height: imageHeight,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(75),
                                 child: Image.asset(
@@ -69,23 +71,23 @@ class ContactCards extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: width * 0.05,
+                              // width: width * 0.05,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'Large Name',
+                                Text(
+                                  Name,
                                   style: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 20,
                                       color:
                                           Color.fromARGB(255, 255, 255, 255)),
                                 ),
                                 const SizedBox(height: 10),
-                                const Text(
-                                  'Position',
+                                Text(
+                                  Position,
                                   style: TextStyle(
-                                      fontSize: 10, color: Colors.grey),
+                                      fontSize: 9, color: Colors.grey),
                                 ),
                                 const SizedBox(height: 15),
                                 Row(
